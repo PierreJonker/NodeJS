@@ -18,14 +18,14 @@ const mongoose = require("mongoose"),
       },
       email: {
         type: String,
-        required: true,
-        lowercase: true,
+        // required: true,
+        // lowercase: true,
         unique: true
       },
       zipCode: {
         type: Number,
-        min: [1000, "Zip code too short"],
-        max: 99999
+       // min: [1000, "Zip code too short"],
+        //max: 99999
       },
       password: {
         type: String,
@@ -42,11 +42,11 @@ const mongoose = require("mongoose"),
     }
   );
 
-userSchema.virtual("fullName").get(function() {
+userSchema.virtual("fullName").get(function () {
   return `${this.name.first} ${this.name.last}`;
 });
 
-userSchema.pre("save", function(next) {
+userSchema.pre("save", function (next) {
   let user = this;
   if (user.subscribedAccount === undefined) {
     Subscriber.findOne({
@@ -65,7 +65,7 @@ userSchema.pre("save", function(next) {
   }
 });
 
-userSchema.pre("save", function(next) {
+userSchema.pre("save", function (next) {
   let user = this;
   bcrypt
     .hash(user.password, 10)
@@ -79,7 +79,7 @@ userSchema.pre("save", function(next) {
     });
 });
 
-userSchema.methods.passwordComparison = function(inputPassword) {
+userSchema.methods.passwordComparison = function (inputPassword) {
   let user = this;
   return bcrypt.compare(inputPassword, user.password);
 };

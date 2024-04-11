@@ -163,8 +163,8 @@ module.exports = {
       .notEmpty()
       .isInt()
       .isLength({
-        min: 5,
-        max: 5
+        min: 4,
+        max: 4
       })
       .equals(req.body.zipCode);
     req.check("password", "Password cannot be empty").notEmpty();
