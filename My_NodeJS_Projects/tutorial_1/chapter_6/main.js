@@ -36,15 +36,23 @@ app.get('/contact', (req, res) => {
     res.render('contact');
 });
 
+app.get('/create', (req, res) => {
+    res.render('create');
+});
+
+app.get('/samplepost', (req, res) => {
+    res.render('samplepost');
+});
+
+app.get('/posts/new',(req,res)=>{ 
+    res.render('create')
+   });
+
 app.get('/post/:id', async (req, res) => {
     const blogpost = await BlogPost.findById(req.params.id)
     res.render('post', {
         blogpost: blogpost
     });
-});
-
-app.get('/create', (req, res) => {
-    res.render('create');
 });
 
 app.post('/posts/store', async (req, res) => {
