@@ -4,12 +4,8 @@ const Schema = mongoose.Schema;
 const BlogPostSchema = new Schema({
     title: String,
     body: String,
-    username: {
-        type: String,
-        default: 'John Doe'
-    },
+    username: String,
     datePosted: {
-        /* Can declare property type with an object like this because we need 'default' */
         type: Date,
         default: new Date()
     },
