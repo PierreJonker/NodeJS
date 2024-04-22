@@ -5,7 +5,7 @@ const newUserController = require('./controllers/newUser')
 const storeUserController = require('./controllers/storeUser')
 const loginController = require('./controllers/login')
 const loginUserController = require('./controllers/loginUser')
-const app = new express();
+const app = express();
 const ejs = require('ejs');
 app.set('view engine', 'ejs');
 
